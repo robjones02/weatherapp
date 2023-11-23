@@ -11,16 +11,27 @@
      <div id="main-card">
         <div id="search-div">
             <input id="search-input"type="text" placeholder="Enter Location" spellcheck="false">
-            <button id="search-button"><i class="fa fa-search"></i></button>
+            <button id="search-button"><i class="fa fa-search fa-lg"></i></button>
         </div>
 
         <div id="result-div">
-            <i class="fas fa-bookmark" id="js-save-button"></i>
+            <img id="js-image" src="Images/clear.png">
+            <p id="js-city"></p>
             <p id="js-temp">temp</p>
-            <p id="js-weather"></p>
-            <p id="js-windspeed">wind</p>
+            <div id="stat-div">
+                <p id="js-weather"></p>
+                <p id="js-windspeed">wind</p>
+            </div>
+            
+            <i class="fas fa-bookmark" id="js-save-button"></i>
+
+        </div>
+
+        <div id="save-list-div">
             <p>Saved:</p>
+
             <ul id="js-save-list"></ul>
+
         </div>
 
      </div>

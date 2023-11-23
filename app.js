@@ -5,6 +5,7 @@ const searchBox = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-button');
 const saveButton = document.getElementById('js-save-button');
 const saveList = document.getElementById('js-save-list');
+const image = document.getElementById('js-image');
 
 let savedCities = ['Romsey'];
 let data;
@@ -12,9 +13,11 @@ let data;
 async function checkWeather(city){
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     data = await response.json();
-    
-    document.getElementById('js-temp').innerHTML = 'It is ' + data.main.temp + '°C in ' + data.name;
-    document.getElementById('js-weather').innerHTML = 'The weather is ' + data.weather[0].main;
+
+    //updates text
+    document.getElementById('js-city').innerHTML = data.name + ', ' + data.sys.country;
+    document.getElementById('js-temp').innerHTML = data.main.temp + '°C'
+    document.getElementById('js-weather').innerHTML = data.weather[0].main;
     document.getElementById('js-windspeed').innerHTML = data.wind.speed + ' km/h';
 
     //sets save button icon
@@ -26,7 +29,22 @@ async function checkWeather(city){
         saveButton.classList.add('far', 'fa-bookmark');
     }
 
-    console.log(data);    
+    console.log(data);   
+    
+    //updates the image
+    if(data.weather[0].main == 'Clouds'){
+        image.src ='Images/clouds.png';
+    }else if(data.weather[0].main == 'Clear'){
+        image.src = 'Images/clear.png';
+    }else if(data.weather[0].main == 'Drizzle'){
+        image.src = 'Images/drizzle.png';
+    }else if(data.weather[0].main == 'Mist'){
+        image.src = 'Images/mist.png';
+    }else if(data.weather[0].main == 'Rain'){
+        image.src = 'Images/rain.png';
+    }else if(data.weather[0].main == 'Snow'){
+        image.src = 'Images/snow.png';
+    }
 }
 
 saveButton.addEventListener('click', function(){      
@@ -56,6 +74,7 @@ searchBtn.addEventListener("click", ()=>{
     checkWeather(searchBox.value);
 })
 
+//shows the current saved list on screen
 function updateSaveList() {
     saveList.innerHTML = '';
 
@@ -72,6 +91,8 @@ function updateSaveList() {
 }
 
 updateSaveList();
+
+
 
 
 
