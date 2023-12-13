@@ -51,10 +51,7 @@ input{
     padding-right: 10px;
 }
 
-
-
 #main-card{
-    /*background: linear-gradient(to left top,rgb(6, 58, 82), rgb(46, 156, 207));*/
     background-color: white;
     height: 65%;
     width: 25%;
@@ -99,5 +96,23 @@ li{
 
 p{
     margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {     
+    #main-card {
+      width: 90%;
+    }   
+  }
+
+@media only screen and (min-width: 601px) and (max-width: 1200px){
+   #main-card{
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 965px) and (max-width: 1200px){
+    #main-card{
+        width: 30%;
+    }
 }
 
